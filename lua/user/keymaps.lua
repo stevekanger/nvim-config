@@ -20,10 +20,10 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<M-h>", "<C-w>h", opts)
-keymap("n", "<M-j>", "<C-w>j", opts)
-keymap("n", "<M-k>", "<C-w>k", opts)
-keymap("n", "<M-l>", "<C-w>l", opts)
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -62,25 +62,30 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Harpoon --
-local mark = require('harpoon.mark')
-local ui = require('harpoon.ui')
-vim.keymap.set('n', '<leader>m', mark.add_file)
-vim.keymap.set('n', '<leader>h', ui.toggle_quick_menu)
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+vim.keymap.set("n", "<leader>m", mark.add_file)
+vim.keymap.set("n", "<leader>h", ui.toggle_quick_menu)
 
 -- Telescope --
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 -- Nvim Tree --
-vim.keymap.set('n', '<leader>e', vim.cmd.NvimTreeToggle)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- LSP Saga --
 keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 
--- Terminal --
+-- Toggle Terminal --
+vim.keymap.set({ "n", "t" }, "<leader>t", vim.cmd.ToggleTermToggleAll)
+
+-- Return to normal mode in terminal --
+keymap("t", "<Escape>", "<C-\\><C-N>", term_opts)
+
 -- Better terminal navigation
 -- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)

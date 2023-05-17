@@ -39,6 +39,7 @@ return require('packer').startup(function(use)
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
   use { "lukas-reineke/indent-blankline.nvim" }
   use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
+  use { "akinsho/toggleterm.nvim", tag = '*', config = function() require("toggleterm").setup() end }
   use { 'AlexvZyl/nordic.nvim' }
 
   -- Lsp setup
