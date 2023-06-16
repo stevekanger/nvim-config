@@ -19,6 +19,13 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
+-- Random leader keymaps
+keymap("n", "<leader>s", ":w<CR>", opts)
+keymap("n", "<leader>a", ":wa<CR>", opts)
+keymap("n", "<leader>q", ":bd | bnext<CR>", opts)
+keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+keymap("n", "<leader>n", "<cmd>set relativenumber!<CR>", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -38,6 +45,16 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+
+-- Remap a and i
+keymap("n", "a", "i", opts)
+keymap("n", "i", "a", opts)
+keymap("n", "<S-i>", "<S-a>", opts)
+keymap("n", "<S-a>", "<S-i>", opts)
+
+-- remap half page up and down to center
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Insert --
 -- Press jk fast to exit insert mode
@@ -61,12 +78,6 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- Harpoon --
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
-vim.keymap.set("n", "<leader>m", mark.add_file)
-vim.keymap.set("n", "<leader>h", ui.toggle_quick_menu)
-
 -- Telescope --
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
@@ -78,16 +89,8 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- LSP Saga --
-keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+keymap("n", "<leader>h", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 
--- Toggle Terminal --
-vim.keymap.set({ "n", "t" }, "<leader>t", vim.cmd.ToggleTermToggleAll)
-
--- Return to normal mode in terminal --
-keymap("t", "<Escape>", "<C-\\><C-N>", term_opts)
-
--- Better terminal navigation
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- Terminal --
+-- Esc to get back to normal mode
+keymap("t", "<Esc>", "<C-\\><C-n>", opts)
