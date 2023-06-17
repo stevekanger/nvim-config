@@ -39,8 +39,8 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+--keymap("n", "<S-l>", ":bnext<CR>", opts)
+--keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -53,8 +53,8 @@ keymap("n", "<S-i>", "<S-a>", opts)
 keymap("n", "<S-a>", "<S-i>", opts)
 
 -- remap half page up and down to center
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<Up>", "<C-d>zz")
+vim.keymap.set("n", "<Down>", "<C-u>zz")
 
 -- Insert --
 -- Press jk fast to exit insert mode
@@ -80,10 +80,9 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Telescope --
 local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+vim.keymap.set("n", "<leader>t", builtin.find_files, {})
+vim.keymap.set("n", "<leader>g", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>b", builtin.buffers, {})
 
 -- Nvim Tree --
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
@@ -91,6 +90,14 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 -- LSP Saga --
 keymap("n", "<leader>h", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 
--- Terminal --
+-- Terminal ->
 -- Esc to get back to normal mode
 keymap("t", "<Esc>", "<C-\\><C-n>", opts)
+
+-- Harpoon --
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+vim.keymap.set("n", "<leader>m", mark.add_file, {})
+vim.keymap.set("n", "<leader>j", ui.toggle_quick_menu, {})
+vim.keymap.set("n", "<S-l>", ui.nav_next, {})
+vim.keymap.set("n", "<S-h>", ui.nav_prev, {})

@@ -10,6 +10,9 @@ require('vscode').setup({
   -- Override colors (see ./lua/vscode/colors.lua)
   color_overrides = {
     vscBack = '#0d1117',
+    vscTabCurrent = '#0d1117',
+    vscTabOther = '#010409',
+    vscTabOutside = "#141a24"
   },
 
   -- Override highlight groups (see ./lua/vscode/theme.lua)
@@ -18,7 +21,8 @@ require('vscode').setup({
     -- use colors from this colorscheme by requiring vscode.colors!
     StatusLine = { fg = c.vscFront, bg = '#010409' },
     StatusLineNC = { fg = c.transparent, bg = '#010409' },
-    BufferlineFill = { bg = '#010409' },
+    TabLineSel = { bg = '#010409' },
+    TabLineFill = { bg = '#010409' },
     TelescopeNormal = { fg = c.vscFront, bg = '#010409' },
     NvimTreeNormal = { fg = c.vscFront, bg = '#0d1117' },
     NvimTreeRootFolder = { fg = c.vscFront, bg = '#0d1117' },
