@@ -21,6 +21,8 @@ require('vscode').setup({
     -- use colors from this colorscheme by requiring vscode.colors!
     StatusLine = { fg = c.vscFront, bg = '#010409' },
     StatusLineNC = { fg = c.transparent, bg = '#010409' },
+    BufferlineFill = { bg = '#010409' },
+    BufferVisible = { fg = "#141a24" },
     TabLineSel = { bg = '#010409' },
     TabLineFill = { bg = '#010409' },
     TelescopeNormal = { fg = c.vscFront, bg = '#010409' },

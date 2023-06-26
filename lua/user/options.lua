@@ -8,6 +8,7 @@ local options = {
   hlsearch = true,                         -- highlight all matches on previous search pattern
   ignorecase = true,                       -- ignore case in search patterns
   mouse = "a",                             -- allow the mouse to be used in neovim
+  mousemoveevent = true,                   -- enable mouse movement event
   pumheight = 10,                          -- pop up menu height
   showmode = true,                         -- we don't need to see things like -- INSERT -- anymore
   showtabline = 0,                         -- always show tabs
@@ -26,7 +27,7 @@ local options = {
   tabstop = 2,                             -- insert 2 spaces for a tab
   cursorline = false,                      -- highlight the current line
   number = true,                           -- set numbered lines
-  relativenumber = false,                  -- set relative numbered lines
+  relativenumber = true,                   -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
 
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
